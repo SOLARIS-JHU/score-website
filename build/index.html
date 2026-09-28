@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07130f">
-  <meta name="title" content="SCORE — Statistical Certification of Regions of Attraction">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="title" content="SCORE: Statistical Certification of Regions of Attraction via Extreme Value Theory">
   <meta name="description" content="SCORE combines projected Langevin sampling with extreme value theory to statistically certify regions of attraction in nonlinear systems up to 500 dimensions.">
   <meta name="keywords" content="regions of attraction, Lyapunov stability, extreme value theory, PSGLD, statistical certification, nonlinear systems">
   <meta name="author" content="Pietro Zanotta, Panos Stinis, Ján Drgoňa">
@@ -13,9 +13,13 @@
   <meta property="og:title" content="SCORE: Statistical Certification of Regions of Attraction via Extreme Value Theory">
   <meta property="og:description" content="A scalable framework for bounding worst-case Lyapunov violations with high statistical confidence.">
   <meta property="og:url" content="https://arxiv.org/abs/2603.29658">
+
   <title>SCORE — Statistical Certification of Regions of Attraction</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(', '\\)']], displayMath: [['$$', '$$']] },
@@ -23,186 +27,226 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-
-  <header class="site-header">
-    <div class="shell nav-shell">
-      <a class="wordmark" href="#top" aria-label="SCORE home">
-        <span class="wordmark-mark" aria-hidden="true"></span><span>SCORE</span>
-      </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#method">Method</a><a href="#theory">Theory</a><a href="#results">Results</a><a href="#citation">Citation</a>
-      </nav>
-      <a class="nav-paper" href="https://arxiv.org/pdf/2603.29658" target="_blank" rel="noopener">Read paper <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
+  <button class="scroll-to-top" type="button" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
 
   <main id="main-content">
-    <section class="hero" id="top">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> Statistical safety certification</p>
-          <h1>Certifying stability<br><em>at scale.</em></h1>
-          <p class="hero-deck">SCORE reframes region-of-attraction certification as an extreme-value estimation problem—trading exhaustive search for a conditional statistical certificate that scales to dense, 500-dimensional systems.</p>
-          <div class="authors" aria-label="Authors">
-            <a href="mailto:pzanott1@jh.edu">Pietro Zanotta</a><span>·</span>
-            <a href="mailto:panagiotis.stinis@pnnl.gov">Panos Stinis</a><span>·</span>
-            <a href="mailto:jdrgona1@jh.edu">Ján Drgoňa</a>
-          </div>
-          <p class="affiliations">Johns Hopkins University · Pacific Northwest National Laboratory</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="https://arxiv.org/abs/2603.29658" target="_blank" rel="noopener">arXiv <span aria-hidden="true">↗</span></a>
-            <a class="button button-secondary" href="https://github.com/SOLARIS-JHU/SCORE-Statistical-Certification-of-ROA-via-EVT" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
-            <a class="button button-ghost" href="#citation">Cite</a>
-          </div>
-        </div>
+    <section class="hero publication-header" id="top">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <p class="paper-kicker">Statistical certification for nonlinear systems</p>
+              <h1 class="title is-1 publication-title">SCORE: Statistical Certification of Regions of Attraction via Extreme Value Theory</h1>
 
-        <aside class="certificate-panel" aria-label="Illustrative SCORE certification readout">
-          <div class="panel-header">
-            <div><span class="panel-kicker">Certification readout</span><strong>Boundary level Ω<sub>ρ</sub></strong></div>
-            <span class="status-pill"><i></i> Certified</span>
-          </div>
-          <div class="distribution" aria-label="Weibull tail with a negative upper confidence bound">
-            <div class="axis-label">sampled V̇(x)</div>
-            <div class="curve-wrap" aria-hidden="true">
-              <svg viewBox="0 0 520 210">
-                <defs><linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e7ff6b" stop-opacity="0.72"/><stop offset="100%" stop-color="#e7ff6b" stop-opacity="0.03"/></linearGradient></defs>
-                <path class="grid-line" d="M16 176H504M16 126H504M16 76H504M16 26H504"/>
-                <path class="area" d="M16 176 C85 176 130 173 169 160 C205 148 223 118 252 82 C277 51 311 34 345 46 C384 60 395 111 427 141 C449 160 472 170 504 176 L504 176 Z"/>
-                <path class="curve" d="M16 176 C85 176 130 173 169 160 C205 148 223 118 252 82 C277 51 311 34 345 46 C384 60 395 111 427 141 C449 160 472 170 504 176"/>
-                <line class="bound-line" x1="444" y1="20" x2="444" y2="184"/><line class="zero-line" x1="489" y1="20" x2="489" y2="184"/>
-              </svg>
-              <span class="bound-label">CI<sub>upper</sub></span><span class="zero-label">0</span>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="mailto:pzanott1@jh.edu">Pietro Zanotta</a>,</span>
+                <span class="author-block"><a href="mailto:panagiotis.stinis@pnnl.gov">Panos Stinis</a>,</span>
+                <span class="author-block"><a href="mailto:jdrgona1@jh.edu">Ján Drgoňa</a></span>
+              </div>
+
+              <div class="is-size-6 publication-affiliations">
+                <span>Johns Hopkins University</span>
+                <span class="affiliation-separator">·</span>
+                <span>Pacific Northwest National Laboratory</span>
+                <br>
+                <span class="venue">Submitted to IEEE Control Systems Letters (L-CSS)</span>
+              </div>
+
+              <div class="publication-links" aria-label="Paper resources">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2603.29658" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span><span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2603.29658" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span><span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/SOLARIS-JHU/SCORE-Statistical-Certification-of-ROA-via-EVT" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-quote-right" aria-hidden="true"></i></span><span>BibTeX</span>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="panel-metrics">
-            <div><span>GEV shape</span><strong>ξ̂ &lt; 0</strong><small>finite endpoint</small></div>
-            <div><span>Goodness of fit</span><strong>KS ✓</strong><small>assumption checked</small></div>
-            <div><span>Decision rule</span><strong>CI<sub>upper</sub> &lt; 0</strong><small>certificate issued</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <div class="paper-figure-frame teaser-frame">
+            <img src="static/images/score-pipeline.png" alt="SCORE pipeline: PSGLD samples maxima, block maxima follow a Weibull law, and bootstrapping estimates an upper confidence interval.">
           </div>
-        </aside>
-      </div>
-      <div class="shell headline-stats" aria-label="Headline results">
-        <div><strong>500D</strong><span>dense system certified</span></div>
-        <div><strong>99.99%</strong><span>nominal confidence level</span></div>
-        <div><strong>&lt; 10 min</strong><span>per certification task</span></div>
-      </div>
-    </section>
-
-    <section class="section problem-section">
-      <div class="shell two-column-intro">
-        <div><p class="section-index">01 / The bottleneck</p><h2>A simple condition.<br>A hard global search.</h2></div>
-        <div class="lead-copy">
-          <p>A Lyapunov sublevel set Ω<sub>ρ</sub> is safe when its derivative remains negative. Because checking every point in the volume is redundant, certification reduces to locating the largest derivative on the boundary manifold ℳ.</p>
-          <div class="equation-card"><div>$$\gamma^*=\max_{x\in\mathcal{M}}\dot V(x)$$</div><p>If γ<sup>*</sup> &lt; 0, the region is certified.</p></div>
-          <p>That maximum is non-convex and expensive to find. Grid search, SMT, and sum-of-squares methods offer deterministic guarantees, but encounter severe scaling limits in dense, high-dimensional systems.</p>
+          <h2 class="subtitle has-text-centered teaser-caption">
+            <strong>SCORE certification pipeline.</strong> PSGLD explores large values of the Lyapunov derivative on a compact boundary manifold. Block maxima are modeled with a Weibull-class GEV distribution, and bootstrap resampling estimates a statistical upper confidence bound.
+          </h2>
         </div>
       </div>
     </section>
 
-    <section class="section method-section" id="method">
-      <div class="shell">
-        <div class="section-heading">
-          <div><p class="section-index">02 / Method</p><h2>From rare events to<br>a safety decision.</h2></div>
-          <p>SCORE focuses computation where it matters: near the worst values of V̇ on the candidate region’s boundary.</p>
-        </div>
-        <div class="pipeline-steps" aria-label="SCORE method in four steps">
-          <article><span class="step-number">01</span><div class="step-symbol">∿</div><h3>Explore</h3><p>Run independent projected stochastic gradient Langevin chains on the boundary manifold.</p></article>
-          <article><span class="step-number">02</span><div class="step-symbol">max</div><h3>Extract</h3><p>Split terminal V̇ samples into blocks and retain each block maximum.</p></article>
-          <article><span class="step-number">03</span><div class="step-symbol">ξ̂</div><h3>Fit</h3><p>Fit a Weibull-class generalized extreme value distribution and validate goodness of fit.</p></article>
-          <article><span class="step-number">04</span><div class="step-symbol">✓</div><h3>Certify</h3><p>Bootstrap the finite endpoint. A negative upper confidence bound yields the certificate.</p></article>
-        </div>
-        <figure class="paper-figure pipeline-figure">
-          <div class="figure-frame"><img src="static/images/score-pipeline.png" alt="SCORE pipeline: PSGLD samples maxima, block maxima follow a Weibull law, and bootstrapping estimates an upper confidence interval." loading="lazy"></div>
-          <figcaption><span>Figure 1.</span> The SCORE certification pipeline, from constrained stochastic exploration to a bootstrapped upper confidence bound.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section theory-section" id="theory">
-      <div class="shell theory-grid">
-        <div class="theory-copy">
-          <p class="section-index">03 / Why Weibull?</p><h2>Compact geometry gives the tail an endpoint.</h2>
-          <p>Under stationary sampling and regular local geometry near a nondegenerate maximum, the optimality gap behaves locally like a scaled chi-squared random variable. That places the upper tail of V̇ in the Weibull maximum domain of attraction.</p>
-          <div class="theorem"><span>Theorem 1</span><div>$$1-F_Y(y)\asymp (y_{\max}-y)^{d/2}$$</div><p>As \(y \to y_{\max}^{-}\), the tail decays toward a finite right endpoint.</p></div>
-        </div>
-        <div class="theory-notes">
-          <p class="notes-title">Certificate conditions</p>
-          <ul>
-            <li><i>01</i><div><strong>Coverage</strong><span>Chains must reach the basin containing the global maximum.</span></div></li>
-            <li><i>02</i><div><strong>Convergence</strong><span>Blocks must be large enough to reach the GEV limit.</span></div></li>
-            <li><i>03</i><div><strong>Compactness</strong><span>The level-set boundary must be closed and bounded.</span></div></li>
-            <li><i>04</i><div><strong>Fit validation</strong><span>The empirical maxima must pass the KS goodness-of-fit test.</span></div></li>
-          </ul>
-          <div class="scope-note"><strong>What the result means</strong><p>SCORE provides a conditional statistical certificate—not an unconditional deterministic proof. Its confidence statement depends on the sampling, geometry, convergence, and inference assumptions above.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section results-section" id="results">
-      <div class="shell">
-        <div class="section-heading results-heading">
-          <div><p class="section-index">04 / Results</p><h2>Tight in 2D.<br>Scalable to 500D.</h2></div>
-          <p>The experiments separate the quality of the certification engine from the quality of the Lyapunov candidate.</p>
-        </div>
-        <div class="result-grid">
-          <article class="result-card vdp-card">
-            <div class="card-heading"><div><span>Benchmark 01</span><h3>Van der Pol oscillator</h3></div><span class="confidence-tag">99% confidence</span></div>
-            <div class="figure-frame result-figure"><img src="static/images/vdp-roa.svg" alt="Certified regions of attraction for the reversed two-dimensional Van der Pol oscillator across SOS, EVT, and SMT-based methods." loading="lazy"></div>
-            <p>Applied to the SOS-synthesized candidate, EVT certifies <strong>83%</strong> of the true region, compared with <strong>95%</strong> for exact SOS. With the simpler Dict-Gram candidate, it certifies 37%—showing that candidate synthesis, not the statistical engine, drives most of the conservatism.</p>
-          </article>
-          <article class="result-card scale-card">
-            <div class="card-heading"><div><span>Benchmark 02</span><h3>Maximum dimension</h3></div><span class="confidence-tag">10 min timeout</span></div>
-            <div class="bar-chart" aria-label="Maximum certified dimensions: Zubov plus SMT 2, ICNN plus SMT 2, neural Lyapunov function plus SMT 10, classical SOS 20, SCORE 500.">
-              <div class="bar-row"><span>Zubov + SMT</span><div><i style="--size: 2%;"></i></div><strong>2</strong></div>
-              <div class="bar-row"><span>ICNN + SMT</span><div><i style="--size: 2%;"></i></div><strong>2</strong></div>
-              <div class="bar-row"><span>NLF + SMT</span><div><i style="--size: 4%;"></i></div><strong>10</strong></div>
-              <div class="bar-row"><span>Classical SOS</span><div><i style="--size: 7%;"></i></div><strong>20</strong></div>
-              <div class="bar-row is-score"><span>SCORE</span><div><i style="--size: 100%;"></i></div><strong>500</strong></div>
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 section-title">Abstract</h2>
+            <div class="content has-text-justified publication-copy">
+              <p>Certifying the Region of Attraction (ROA) for high-dimensional nonlinear dynamical systems remains a severe computational bottleneck. Traditional deterministic verification methods provide hard guarantees but suffer from the curse of dimensionality, typically failing to scale beyond 20 dimensions.</p>
+              <p>We propose <strong>SCORE</strong>, a statistical certification framework that shifts from deterministic guarantees to bounding the worst-case safety violation with high statistical confidence. By integrating Projected Stochastic Gradient Langevin Dynamics (PSGLD) with Extreme Value Theory (EVT), SCORE frames ROA certification as a constrained extreme-value estimation problem.</p>
+              <p>Under stationary sampling and a regular local-geometry condition around the global maximum, the Lyapunov derivative belongs to the Weibull maximum domain of attraction. Experiments achieve certification tightness competitive with exact Sum of Squares programming in 2D and scale to a dense, unstructured 500-dimensional ODE at a nominal confidence level of 99.99%.</p>
             </div>
-            <p>On a dense, unstructured dissipative ODE, SCORE reaches 500 dimensions within the same time budget that limits deterministic baselines to 20 dimensions or fewer.</p>
-          </article>
+          </div>
         </div>
-        <div class="takeaway-strip"><span>The takeaway</span><p>Local gradients replace global algebraic search. SCORE’s stochastic exploration avoids the combinatorial structures that make formal pipelines collapse as dimension grows.</p><a href="https://arxiv.org/pdf/2603.29658" target="_blank" rel="noopener">Read the experiments <span aria-hidden="true">→</span></a></div>
       </div>
     </section>
 
-    <section class="section abstract-section" id="abstract">
-      <div class="shell abstract-grid">
-        <div><p class="section-index">05 / Abstract</p><h2>The paper<br>in brief.</h2></div>
-        <div class="abstract-copy"><p>Certifying the Region of Attraction for high-dimensional nonlinear dynamical systems remains a severe computational bottleneck. Traditional deterministic methods provide hard guarantees but typically fail to scale beyond 20 dimensions.</p><p>SCORE integrates Projected Stochastic Gradient Langevin Dynamics with Extreme Value Theory, framing certification as constrained extreme-value estimation. Under stationary sampling and regular local geometry, the Lyapunov derivative belongs to the Weibull maximum domain of attraction, enabling a finite-endpoint estimate and an upper confidence bound.</p><p>Experiments show certification tightness competitive with exact Sum of Squares programming on a 2D benchmark and successful application to a dense 500-dimensional ODE at a nominal 99.99% confidence level.</p></div>
+    <section class="section hero" id="problem">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 has-text-centered section-title">Problem Formulation</h2>
+            <div class="content has-text-justified publication-copy">
+              <p>For a continuous-time system ‎(\dot{x}=f(x)) with Lyapunov candidate (V(x)), the sublevel set ‎(Ω_\rho = \{x \mid V(x) \leq \rho\}) is a forward-invariant subset of the ROA when ‎(\dot V(x)&lt;0) throughout the set, except at the origin.</p>
+              <p>Because (V) is continuous, it is sufficient to evaluate the largest Lyapunov derivative on the boundary manifold ‎(\mathcal{M}=\{x \mid V(x)=\rho\}):</p>
+              <div class="equation-box">$$\gamma^*=\max_{x\in\mathcal{M}}\dot V(x)$$<span>If γ<sup>*</sup> &lt; 0, the region is certified.</span></div>
+              <p>Finding this global maximum is highly non-convex. Grid methods face the curse of dimensionality, SMT is inherently difficult for dense nonlinear constraints, and SOS programs undergo combinatorial matrix growth. SCORE instead treats the worst-case violation as a rare-event estimation problem.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section citation-section" id="citation">
-      <div class="shell citation-grid">
-        <div><p class="section-index">06 / Citation</p><h2>Build on<br>SCORE.</h2><p class="citation-note">Source code, experiments, and reproducibility materials are available in the public repository.</p><a class="text-link" href="https://github.com/SOLARIS-JHU/SCORE-Statistical-Certification-of-ROA-via-EVT" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div>
-        <div class="bibtex-card">
-          <div class="bibtex-top"><span>BibTeX</span><button class="copy-button" type="button" data-copy-target="bibtex-code">Copy citation</button></div>
-          <pre id="bibtex-code"><code>@article{zanotta2026score,
-  title   = {SCORE: Statistical Certification of
-             Regions of Attraction via Extreme Value Theory},
-  author  = {Zanotta, Pietro and Stinis, Panos and
-             Drgo\v{n}a, J\'{a}n},
+    <section class="section hero is-light" id="method">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered section-title">Statistical Certification via EVT</h2>
+        <p class="section-intro has-text-centered">Four steps turn stochastic exploration on the ROA boundary into a conditional statistical certificate.</p>
+
+        <div class="columns method-columns">
+          <div class="column"><article class="method-card"><span class="method-number">01</span><div class="method-icon"><i class="fas fa-route" aria-hidden="true"></i></div><h3 class="title is-5">Sample</h3><p>Run independent PSGLD chains initialized across the boundary manifold to explore high values of Ẋ.</p></article></div>
+          <div class="column"><article class="method-card"><span class="method-number">02</span><div class="method-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div><h3 class="title is-5">Block maxima</h3><p>Partition the terminal samples into blocks and retain the maximum from each block.</p></article></div>
+          <div class="column"><article class="method-card"><span class="method-number">03</span><div class="method-icon"><i class="fas fa-chart-area" aria-hidden="true"></i></div><h3 class="title is-5">Fit</h3><p>Fit a Weibull-class generalized extreme value distribution and check goodness of fit.</p></article></div>
+          <div class="column"><article class="method-card"><span class="method-number">04</span><div class="method-icon"><i class="fas fa-check-circle" aria-hidden="true"></i></div><h3 class="title is-5">Certify</h3><p>Bootstrap the finite endpoint; a negative upper confidence bound yields the certificate.</p></article></div>
+        </div>
+
+        <div class="columns is-centered theory-row">
+          <div class="column is-five-twelfths">
+            <div class="theory-card">
+              <span class="card-label">Theorem 1</span>
+              <h3 class="title is-4">Why Weibull?</h3>
+              <p>Under stationary sampling and regular local geometry near a nondegenerate maximum, the optimality gap behaves locally like a scaled chi-squared variable.</p>
+              <div class="theory-equation">$$1-F_Y(y)\asymp (y_{\max}-y)^{d/2}$$</div>
+              <p>This decay toward a finite right endpoint places the upper tail in the Weibull maximum domain of attraction.</p>
+            </div>
+          </div>
+          <div class="column is-seven-twelfths">
+            <div class="conditions-card">
+              <span class="card-label">Certificate conditions</span>
+              <div class="condition"><strong>Coverage</strong><span>Chains must reach the basin containing the global maximum.</span></div>
+              <div class="condition"><strong>Convergence</strong><span>Blocks must be large enough to reach the GEV limit.</span></div>
+              <div class="condition"><strong>Compactness</strong><span>The boundary manifold must be closed and bounded.</span></div>
+              <div class="condition"><strong>Fit validation</strong><span>Block maxima must pass the KS goodness-of-fit test.</span></div>
+              <p class="scope-note"><strong>Scope:</strong> SCORE provides a conditional statistical certificate, not an unconditional deterministic proof.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero" id="results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered section-title">Results</h2>
+        <div class="content has-text-centered results-intro">
+          <p>SCORE is evaluated for both low-dimensional tightness and high-dimensional scalability.</p>
+        </div>
+
+        <div class="result-block">
+          <h3 class="title is-4">Tightness on the 2D Van der Pol oscillator</h3>
+          <div class="paper-figure-frame result-figure">
+            <img src="static/images/vdp-roa.svg" alt="Certified regions of attraction for the reversed two-dimensional Van der Pol oscillator across SOS, EVT, and SMT-based methods." loading="lazy">
+          </div>
+          <div class="content has-text-justified publication-copy result-copy">
+            <p>Exact SOS certifies 95% of the true ROA. Applying EVT to the SOS-synthesized candidate reaches <strong>83%</strong> at 99% confidence, demonstrating that the statistical certification engine closely approximates deterministic verification. SCORE with the simpler Dict-Gram candidate certifies 37%, isolating the remaining conservatism to candidate synthesis.</p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="result-block">
+          <h3 class="title is-4">Scalability to dense high-dimensional systems</h3>
+          <p class="has-text-centered result-subtitle">Maximum certified state dimension within a 10-minute timeout.</p>
+          <div class="table-container benchmark-table-wrap">
+            <table class="table is-fullwidth is-hoverable benchmark-table">
+              <thead><tr><th>Certification pipeline</th><th class="has-text-right">Maximum dimension</th></tr></thead>
+              <tbody>
+                <tr><td>Zubov (PINN) + SMT</td><td class="has-text-right">2</td></tr>
+                <tr><td>ICNN + SMT</td><td class="has-text-right">2</td></tr>
+                <tr><td>NLF + SMT</td><td class="has-text-right">10</td></tr>
+                <tr><td>Classical SOS</td><td class="has-text-right">20</td></tr>
+                <tr class="highlight-row"><td><strong>Dict-Gram + EVT (SCORE)</strong></td><td class="has-text-right"><strong>500</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="content has-text-justified publication-copy result-copy">
+            <p>On a dense, unstructured dissipative ODE, SCORE reaches <strong>500 dimensions</strong> at a nominal confidence level of <strong>99.99%</strong>. The method relies on local gradient evaluations rather than global algebraic or logical constraint resolution, avoiding the combinatorial bottlenecks that restrict the deterministic baselines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="takeaway">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 section-title">Main Takeaway</h2>
+            <p class="takeaway-text">SCORE makes high-dimensional ROA certification computationally practical by estimating a statistically defensible upper bound on the worst Lyapunov-derivative violation. It complements—not replaces—deterministic verification when exact global proofs are computationally out of reach.</p>
+            <p class="acknowledgment">This work was supported by the U.S. Department of Energy, Office of Science, Advanced Scientific Computing Research program under the MOLUcQ project (No. 81739).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title is-3 section-title">BibTeX</h2>
+          <button class="copy-button" type="button" data-copy-target="bibtex-code"><i class="far fa-copy" aria-hidden="true"></i><span>Copy</span></button>
+        </div>
+        <pre id="bibtex-code"><code>@article{zanotta2026score,
+  title   = {SCORE: Statistical Certification of Regions of Attraction via Extreme Value Theory},
+  author  = {Zanotta, Pietro and Stinis, Panos and Drgo\v{n}a, J\'{a}n},
   journal = {arXiv preprint arXiv:2603.29658},
   year    = {2026}
 }</code></pre>
-        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="shell footer-grid">
-      <div><a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark" aria-hidden="true"></span><span>SCORE</span></a><p>Statistical certification for high-dimensional nonlinear systems.</p></div>
-      <div class="footer-support"><p>Supported by the U.S. Department of Energy, Office of Science, ASCR, under the MOLUcQ project (No. 81739).</p></div>
-      <div class="footer-links"><a href="https://arxiv.org/abs/2603.29658" target="_blank" rel="noopener">Paper</a><a href="https://github.com/SOLARIS-JHU/SCORE-Statistical-Certification-of-ROA-via-EVT" target="_blank" rel="noopener">Code</a><a href="#top">Back to top ↑</a></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>Project page for <strong>SCORE</strong>. View the <a href="https://arxiv.org/abs/2603.29658" target="_blank" rel="noopener">paper</a> or explore the <a href="https://github.com/SOLARIS-JHU/SCORE-Statistical-Certification-of-ROA-via-EVT" target="_blank" rel="noopener">code</a>.</p>
+            <p class="template-credit">Built from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="shell template-credit">Adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</div>
   </footer>
 </body>
 </html>

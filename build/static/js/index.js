@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const copyButton = document.querySelector('[data-copy-target]');
+  const scrollButton = document.querySelector('.scroll-to-top');
+
+  if (scrollButton) {
+    const updateScrollButton = () => {
+      scrollButton.classList.toggle('visible', window.scrollY > 320);
+    };
+
+    window.addEventListener('scroll', updateScrollButton, { passive: true });
+    scrollButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    updateScrollButton();
+  }
+
   if (!copyButton) return;
 
   copyButton.addEventListener('click', async () => {
@@ -22,10 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const originalLabel = copyButton.textContent;
-    copyButton.textContent = 'Copied';
+    const label = copyButton.querySelector('span');
+    if (label) label.textContent = 'Copied';
     copyButton.classList.add('copied');
     window.setTimeout(() => {
-      copyButton.textContent = originalLabel;
+      if (label) {
+        label.textContent = 'Copy';
+      } else {
+        copyButton.textContent = originalLabel;
+      }
       copyButton.classList.remove('copied');
     }, 1800);
   });
