@@ -99,6 +99,34 @@ img { display: block; max-width: 100%; }
 .takeaway-text { color: var(--text-secondary); font-size: 1.12rem; line-height: 1.8; }
 .acknowledgment { margin-top: 2rem; color: var(--text-light); font-size: .83rem; }
 
+.tutorials-section { position: relative; overflow: hidden; background: linear-gradient(180deg, #f8fbff 0%, #ffffff 48%, #f8fafc 100%); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+.tutorials-section::before, .tutorials-section::after { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; filter: blur(4px); pointer-events: none; }
+.tutorials-section::before { top: -170px; left: -120px; background: radial-gradient(circle, rgb(37 99 235 / .1), transparent 68%); }
+.tutorials-section::after { right: -130px; bottom: -170px; background: radial-gradient(circle, rgb(124 58 237 / .09), transparent 68%); }
+.tutorials-section .container { position: relative; z-index: 1; }
+.tutorial-heading { margin-bottom: 2.1rem; }
+.tutorial-eyebrow { display: inline-flex; align-items: center; gap: .45rem; margin: 0 0 .75rem; color: var(--primary-color); font-size: .76rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.tutorial-heading .section-title { margin-bottom: 1.85rem !important; }
+.tutorial-heading .section-intro { margin-bottom: 0; }
+.tutorial-setup { display: flex; align-items: center; gap: 1rem; max-width: 880px; margin: 0 auto 1.4rem; padding: 1.15rem 1.35rem; background: linear-gradient(110deg, #eff6ff, #f5f3ff); border: 1px solid #dbeafe; border-radius: var(--border-radius-lg); box-shadow: 0 10px 28px rgb(37 99 235 / .08); }
+.tutorial-setup-icon { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 48px; height: 48px; color: white; background: var(--gradient-primary); border-radius: 14px; font-size: 1.05rem; box-shadow: 0 10px 24px rgb(37 99 235 / .22); }
+.tutorial-setup h3 { margin: 0 0 .25rem !important; font-size: 1.05rem !important; }
+.tutorial-setup p { margin: 0; color: #52637a; font-size: .93rem; line-height: 1.65; }
+.tutorial-list { display: grid; gap: 1.25rem; max-width: 880px; margin: 0 auto; }
+.tutorial-card { --tutorial-accent: #2563eb; --tutorial-soft: #eff6ff; position: relative; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 1.45rem; align-items: center; padding: 1.65rem 1.85rem; overflow: hidden; background: linear-gradient(115deg, var(--tutorial-soft) 0%, white 36%); border: 1px solid #dbeafe; border-radius: 20px; box-shadow: 0 10px 28px rgb(15 23 42 / .07); transition: var(--transition); }
+.tutorial-card::after { content: ''; position: absolute; top: 0; right: 0; width: 5px; height: 100%; background: var(--tutorial-accent); opacity: .75; }
+.tutorial-card-training { --tutorial-accent: #7c3aed; --tutorial-soft: #f5f3ff; border-color: #e9d5ff; }
+.tutorial-card-assessment { --tutorial-accent: #0f9f6e; --tutorial-soft: #ecfdf5; border-color: #d1fae5; }
+.tutorial-card:hover { box-shadow: 0 18px 40px rgb(15 23 42 / .11); transform: translateY(-4px); }
+.tutorial-number { display: flex; align-items: center; justify-content: center; width: 62px; height: 62px; color: white; background: var(--tutorial-accent); border: 5px solid rgb(255 255 255 / .86); border-radius: 18px; box-shadow: 0 9px 20px rgb(15 23 42 / .13); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.18rem; font-weight: 800; line-height: 1; }
+.tutorial-card-content { min-width: 0; }
+.tutorial-topic { display: block; margin-bottom: .3rem; color: var(--tutorial-accent); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.tutorial-card h3 { margin: 0 0 .5rem !important; color: #172033; }
+.tutorial-card p { max-width: 680px; margin: 0 0 1rem; color: var(--text-secondary); font-size: .96rem; line-height: 1.7; }
+.tutorial-link { display: inline-flex; align-items: center; gap: .5rem; padding: .52rem .78rem; color: var(--tutorial-accent); background: white; border: 1px solid currentColor; border-radius: 9px; font-size: .84rem; font-weight: 750; line-height: 1; text-decoration: none; transition: var(--transition); }
+.tutorial-link:hover { color: white; background: var(--tutorial-accent); box-shadow: 0 7px 16px rgb(15 23 42 / .12); transform: translateY(-1px); }
+.tutorial-link i { font-size: .68rem; }
+
 .bibtex-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
 .bibtex-header .section-title { margin-bottom: 0 !important; }
 .bibtex-header .section-title::after { left: 0; transform: none; }
@@ -142,6 +170,11 @@ code { color: var(--text-primary) !important; background: transparent !important
   .link-block .button { width: 100%; justify-content: center; }
   .paper-figure-frame { padding: .55rem; border-radius: 12px; }
   .method-card, .theory-card, .conditions-card { padding: 1.35rem; }
+  .tutorial-heading { margin-bottom: 1.65rem; }
+  .tutorial-setup { align-items: flex-start; padding: 1.1rem; }
+  .tutorial-setup-icon { display: none; }
+  .tutorial-card { grid-template-columns: 50px minmax(0, 1fr); gap: 1rem; padding: 1.3rem 1.2rem; border-radius: 16px; }
+  .tutorial-number { width: 46px; height: 46px; border-width: 3px; border-radius: 13px; font-size: .95rem; }
   .scroll-to-top { width: 43px; height: 43px; right: 1rem; bottom: 1rem; }
 }
 
@@ -153,5 +186,5 @@ code { color: var(--text-primary) !important; background: transparent !important
 @media print {
   .scroll-to-top, .publication-links, .copy-button { display: none; }
   .hero, .section { padding: 1.5rem 0; }
-  .method-card, .theory-card, .conditions-card, .paper-figure-frame { box-shadow: none; }
+  .method-card, .theory-card, .conditions-card, .paper-figure-frame, .tutorial-card { box-shadow: none; }
 }
